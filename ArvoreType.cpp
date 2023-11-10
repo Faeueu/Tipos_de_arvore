@@ -14,18 +14,21 @@ NoArvore* inserirNo(int value) {
     newNo->right = NULL;
     return newNo;
 }
+
 int altura(NoArvore *raiz){
     if(raiz == NULL){
         return 0;
     }
     return 1+max(altura(raiz->left), altura(raiz->right));
 }
+
 int contarNo(NoArvore *raiz){
     if (raiz==NULL) {
         return 0;
     }
     return 1 + contarNo(raiz->left) + contarNo(raiz->right);
 }
+
 bool arvoreCheia(NoArvore *raiz){
     if(raiz == NULL){
         return true;
@@ -41,6 +44,7 @@ bool arvoreCheia(NoArvore *raiz){
 
     return (arvoreCheia(raiz->left) && arvoreCheia(raiz->right));
 }
+
 bool arvorePerfeita(NoArvore *raiz){
     if(raiz == NULL){
         return true;
@@ -54,6 +58,7 @@ bool arvorePerfeita(NoArvore *raiz){
     }
     return false;
 }
+
 bool arvoreCompleta(NoArvore *raiz, int indice, int NumNo){
     if(raiz == NULL){
         return true;
@@ -67,12 +72,14 @@ bool arvoreCompleta(NoArvore *raiz, int indice, int NumNo){
             arvoreCompleta(raiz->right, 2*indice+2, NumNo);
 
 }
+
 bool ArvoreCompleta(NoArvore *raiz){
     int alturaArvore = altura(raiz);
     int totalNo = contarNo(raiz);
 
     return arvoreCompleta(raiz, 0, totalNo) && (totalNo == (1 <<alturaArvore)-1);
 }
+
 bool arvoreBalanceada(NoArvore *raiz){
     if(raiz == NULL){
         return true;
@@ -86,6 +93,7 @@ bool arvoreBalanceada(NoArvore *raiz){
     }
     return false;
 }
+
 bool arvoreDegenerada(NoArvore *raiz){
     if(raiz == NULL || (raiz->left == NULL && raiz->right == NULL)){
         return true;
@@ -96,6 +104,7 @@ bool arvoreDegenerada(NoArvore *raiz){
     }
     return false;
 }
+
 bool arvoreDistorcida(NoArvore *raiz){
     if(raiz == NULL || (raiz->left == NULL && raiz->right == NULL)){
         return true;
